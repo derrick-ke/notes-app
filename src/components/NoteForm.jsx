@@ -6,7 +6,7 @@ const NoteForm = () => {
   const [title, setTitle] = useState('');
   const [description, setDescription] = useState('');
   const [disabled, setDisabled] = useState(true);
-  const { addNote, noteEdit } = useContext(NoteContext);
+  const { addNote, noteEdit, updateNote } = useContext(NoteContext);
 
   useEffect(() => {
     if (noteEdit.edit === true) {
@@ -30,8 +30,12 @@ const NoteForm = () => {
 
   const handleSubmit = (e) => {
     e.preventDefault();
-    const note = { title, description };
-    addNote(note);
+    const newNote = { title, description };
+    if (noteEdit.edit === true) {
+      updateNote(noteEdit.item.id, newNote);
+    } else {
+      addNote(newNote);
+    }
     setDisabled(true);
     setTitle('');
     setDescription('');

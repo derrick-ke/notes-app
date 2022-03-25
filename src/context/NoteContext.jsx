@@ -41,9 +41,15 @@ export const NoteProvider = ({ children }) => {
     });
   };
 
+  const updateNote = (id, note) => {
+    setNotes((prev) =>
+      prev.map((item) => (item.id === id ? { ...item, ...note } : item))
+    );
+  };
+
   return (
     <NoteContext.Provider
-      value={{ notes, addNote, deleteNote, editNote, noteEdit }}
+      value={{ notes, addNote, deleteNote, editNote, noteEdit, updateNote }}
     >
       {children}
     </NoteContext.Provider>
