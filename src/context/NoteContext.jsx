@@ -20,9 +20,33 @@ export const NoteProvider = ({ children }) => {
       description: 'Read a book',
     },
   ]);
+  const [noteEdit, setNoteEdit] = useState({
+    edit: false,
+    item: {},
+  });
+
+  const addNote = (note) => {
+    note.id = Math.floor(Math.random() * 1000).toFixed();
+    setNotes((prev) => [note, ...prev]);
+  };
+
+  const deleteNote = (note) => {
+    setNotes((prev) => prev.filter((item) => item.id !== note.id));
+  };
+
+  const editNote = (item) => {
+    setNoteEdit({
+      edit: true,
+      item,
+    });
+  };
 
   return (
-    <NoteContext.Provider value={{ notes }}>{children}</NoteContext.Provider>
+    <NoteContext.Provider
+      value={{ notes, addNote, deleteNote, editNote, noteEdit }}
+    >
+      {children}
+    </NoteContext.Provider>
   );
 };
 

@@ -9,7 +9,7 @@ function App() {
   return (
     <NoteProvider>
       <Router>
-        <div className='h-screen bg-gray-200 text-lg tracking-wide'>
+        <div className=' text-lg tracking-wide'>
           <Header />
           <Routes>
             <Route
