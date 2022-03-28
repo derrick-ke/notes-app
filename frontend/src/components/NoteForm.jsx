@@ -32,7 +32,7 @@ const NoteForm = () => {
     e.preventDefault();
     const newNote = { title, description };
     if (noteEdit.edit === true) {
-      updateNote(noteEdit.item.id, newNote);
+      updateNote(noteEdit.item._id, newNote);
     } else {
       addNote(newNote);
     }
