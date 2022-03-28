@@ -9,7 +9,7 @@ const noteSchema = mongoose.Schema({
   },
   createdAt: {
     type: Date,
-    default: new Date(),
+    default: new Date().toISOString(),
   },
 });
 

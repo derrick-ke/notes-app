@@ -2,12 +2,10 @@ const Note = require('../models/Note');
 
 exports.getNotes = async (req, res) => {
   try {
-    const notes = await Note.find();
+    const notes = await Note.find().sort({ createdAt: -1 });
 
     res.status(200).json({
-      status: 'success',
-      results: notes.length,
-      data: notes,
+      notes,
     });
   } catch (error) {
     res.status(404).json({
@@ -22,13 +20,12 @@ exports.createNote = async (req, res) => {
     const note = await Note.create(req.body);
 
     res.status(201).json({
-      status: 'success',
-      data: note,
+      note,
     });
   } catch (error) {
     res.status(400).json({
       status: 'error',
-      message: error,
+      message: 'Create failed',
     });
   }
 };
