@@ -15,16 +15,16 @@ const NoteItem = ({ note }) => {
   };
 
   return (
-    <Card>
+    <Card className='pt-12'>
       {note.title && (
         <div className='font-sans text-2xl font-bold mb-4 '>{note.title}</div>
       )}
       <div>{note.description}</div>
 
-      <button className='absolute right-0 top-0 mt-8 mr-16'>
+      <button className='absolute right-0 top-0 mt-4 mr-16'>
         <ImPencil onClick={handleEdit} />
       </button>
-      <button className='absolute right-0 top-0 mt-8 mr-8'>
+      <button className='absolute right-0 top-0 mt-4 mr-8'>
         <ImBin onClick={handleDelete} />
       </button>
     </Card>

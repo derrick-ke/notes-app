@@ -1,6 +1,6 @@
 const Card = ({ children }) => {
   return (
-    <div className='container mx-auto bg-white my-4 p-8 rounded-xl shadow bg-gray-100 relative'>
+    <div className='mx-auto bg-white my-4 px-8 py-12 rounded-xl shadow relative w-full lg:w-1/2 xl:w-1/2'>
       {children}
     </div>
   );

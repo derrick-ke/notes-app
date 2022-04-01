@@ -30,6 +30,29 @@ exports.createNote = async (req, res) => {
   }
 };
 
+exports.updateNote = async (req, res) => {
+  try {
+    const note = await Note.findByIdAndUpdate(req.params.id, req.body, {
+      runValidators: true,
+    });
+
+    console.log(note);
+
+    if (!note) {
+      return new Error('Note does not exist');
+    }
+
+    res.status(200).json({
+      note,
+    });
+  } catch (error) {
+    res.status(400).json({
+      status: 'error',
+      message: 'Update failed',
+    });
+  }
+};
+
 exports.deleteNote = async (req, res) => {
   try {
     const note = await Note.findByIdAndDelete(req.params.id);

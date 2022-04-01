@@ -8,7 +8,7 @@ const app = express();
 app.use(express.json());
 
 app.use(
-  '/note',
+  '/notes',
   createProxyMiddleware({
     target: 'http://localhost:5000/api',
     changeOrigin: true,
@@ -25,7 +25,7 @@ const corsOptions = {
 
 app.use(cors(corsOptions));
 
-app.options('/note', cors());
+app.options('/notes', cors());
 
 // app.use((req, res, next) => {
 //   res.header('Access-Control-Allow-Origin', '*');
@@ -43,6 +43,6 @@ app.options('/note', cors());
 // });
 
 //Create routes for the notes
-app.use('/api/note', noteRoute);
+app.use('/api/notes', noteRoute);
 
 module.exports = app;
